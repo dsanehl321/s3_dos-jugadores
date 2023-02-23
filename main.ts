@@ -43,19 +43,22 @@ input.onButtonPressed(Button.B, function () {
     if (pulsado == false) {
         pulsado = true
         if (num_icono == 0 || num_icono == 2) {
+            music.playTone(988, music.beat(BeatFraction.Eighth))
             puntos_B += 1
-            if (puntos_B == 10) {
-                basic.showString("B: has ganado")
+            if (puntos_B == maxPuntos) {
+                basic.showString("A: has ganado")
                 basic.pause(5000)
                 juego_detenido = true
             }
         } else if (num_icono == 8) {
-            basic.showString("B: has perdido")
+            music.playTone(131, music.beat(BeatFraction.Double))
+            basic.showString("A: has perdido")
             basic.pause(5000)
             juego_detenido = true
         } else {
             if (puntos_B > 0) {
-                puntos_B += -1
+                music.playTone(262, music.beat(BeatFraction.Eighth))
+                puntos_A += -1
             }
         }
     }
